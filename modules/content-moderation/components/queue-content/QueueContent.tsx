@@ -12,12 +12,14 @@ const QueueContent: React.FC<QueueContentProps> = async ({ params }) => {
   const { items, totalCount } = await getReportQueueQuery(params);
 
   return (
-    <>
-      <div className="flex-1 overflow-y-auto">
+    <div className="flex h-full min-h-0 flex-col">
+      <div className="min-h-0 flex-1 overflow-y-auto">
         <ReportQueueList items={items} />
       </div>
-      <ReportQueuePagination totalCount={totalCount} />
-    </>
+      <div className="mt-auto">
+        <ReportQueuePagination totalCount={totalCount} />
+      </div>
+    </div>
   );
 };
 

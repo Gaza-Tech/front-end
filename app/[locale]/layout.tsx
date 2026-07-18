@@ -22,11 +22,9 @@ const RTL_LOCALES = ['ar', 'he', 'fa', 'ur'];
 
 export default async function LocaleLayout({
   children,
-  chat,
   params,
 }: {
   children: React.ReactNode;
-  chat?: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
@@ -48,10 +46,7 @@ export default async function LocaleLayout({
               disableTransitionOnChange
             >
               <NextTopLoader color="#0B57D0" showSpinner={false} />
-              <NextIntlClientProvider>
-                {children}
-                {chat}
-              </NextIntlClientProvider>
+              <NextIntlClientProvider>{children}</NextIntlClientProvider>
               <Toaster richColors position="top-center" />
             </ThemeProvider>
           </DirectionProvider>
