@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'The leading tech marketplace in Gaza. Buy and sell technology products.',
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://gaza-tech-eta.vercel.app'
   ),
   openGraph: {
     type: 'website',
