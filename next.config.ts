@@ -66,7 +66,9 @@ const nextConfig: NextConfig = {
         hostname: '*',
       },
     ],
+
   },
+  devIndicators: false,
   cacheComponents: true,
 };
 

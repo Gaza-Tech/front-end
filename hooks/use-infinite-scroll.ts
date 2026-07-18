@@ -27,6 +27,8 @@ interface UseInfiniteScrollOptions<TItem, TFilters> {
   initialItems: TItem[];
   initialHasMore: boolean;
   limit?: number;
+  /** Last page already rendered externally. Hook will fetch startPage+1 next. Defaults to 0. */
+  startPage?: number;
 }
 
 interface UseInfiniteScrollReturn<TItem> {
@@ -46,6 +48,7 @@ export function useInfiniteScroll<TItem, TFilters>({
   initialItems,
   initialHasMore,
   limit = DEFAULT_LIMIT_NUMBER,
+  startPage = DEFAULT_PAGE_NUMBER - 1,
 }: UseInfiniteScrollOptions<TItem, TFilters>): UseInfiniteScrollReturn<TItem> {
   const [items, setItems] = useState<TItem[]>(initialItems);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +60,7 @@ export function useInfiniteScroll<TItem, TFilters>({
   const [retryTrigger, setRetryTrigger] = useState(0);
 
   // Refs for stable values that don't trigger re-renders
-  const page = useRef(DEFAULT_PAGE_NUMBER);
+  const page = useRef(startPage);
   const isFetching = useRef(false);
   const abortController = useRef<AbortController | null>(null);
 
@@ -140,8 +143,7 @@ export function useInfiniteScroll<TItem, TFilters>({
 
     // Reset state
     setItems(initialItems);
-    page.current =
-      initialItems.length > 0 ? DEFAULT_PAGE_NUMBER : DEFAULT_PAGE_NUMBER - 1;
+    page.current = startPage;
     setHasMore(initialHasMore);
     setError(null);
     isFetching.current = false;

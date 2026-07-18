@@ -29,7 +29,7 @@ const ListingCard = ({ listing }: ListingCardProps) => {
   return (
     <Link
       href={`/listings/${listing_id}`}
-      className="group bg-card hover:border-primary relative block overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-lg"
+      className="group bg-card hover:border-primary relative flex flex-col overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-lg"
     >
       {/* Image Container */}
       <div className="bg-muted relative aspect-4/3 overflow-hidden">
@@ -60,22 +60,23 @@ const ListingCard = ({ listing }: ListingCardProps) => {
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <div className="mb-2 flex items-start justify-between">
-          <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
-            {title}
-          </h3>
-        </div>
+      <div className="flex flex-1 flex-col justify-between p-4">
+        <div>
+          <div className="mb-2 flex items-start justify-between">
+            <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
+              {title}
+            </h3>
+          </div>
 
-        <div className="mb-3 flex items-baseline gap-1">
-          <span className="text-primary text-lg font-bold">
-            {price.toLocaleString()}
-          </span>
-          <span className="text-muted-foreground text-xs font-medium">
-            {currency}
-          </span>
+          <div className="mb-3 flex items-baseline gap-1">
+            <span className="text-primary text-lg font-bold">
+              {price.toLocaleString()}
+            </span>
+            <span className="text-muted-foreground text-xs font-medium">
+              {currency}
+            </span>
+          </div>
         </div>
-
         <div className="border-border mt-3 flex items-center justify-between border-t pt-3">
           <div className="flex items-center gap-2">
             <div className="bg-muted flex size-6 items-center justify-center rounded-full">
