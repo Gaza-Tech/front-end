@@ -324,7 +324,7 @@ export async function getCategoriesWithoutParentQuery(): Promise<
     .from('marketplace_categories')
     .select('*')
     .eq('is_active', true)
-    .not('parent_id', 'is', null);
+    .is('parent_id', null);
 
   if (error) {
     console.error('Error fetching categories:', error);

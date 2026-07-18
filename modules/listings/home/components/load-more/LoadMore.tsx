@@ -6,7 +6,10 @@ import { getListingsAction } from '@/modules/listings/actions';
 import { ListingCardItem, ListingsFilters } from '@/modules/listings/queries';
 import { ListingCardSkeleton } from '../listing-card';
 import ListingsGrid from '../listings-grid';
-import { DEFAULT_LIMIT_NUMBER } from '@/constants/pagination';
+import {
+  DEFAULT_LIMIT_NUMBER,
+  DEFAULT_PAGE_NUMBER,
+} from '@/constants/pagination';
 
 type LoadMoreProps = {
   filters: ListingsFilters;
@@ -40,6 +43,7 @@ const LoadMore = ({ filters, initialHasMore }: LoadMoreProps) => {
       initialItems: [],
       initialHasMore,
       limit: DEFAULT_LIMIT_NUMBER,
+      startPage: DEFAULT_PAGE_NUMBER,
     });
 
   return (

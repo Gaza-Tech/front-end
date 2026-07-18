@@ -67,6 +67,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  devIndicators: false,
   cacheComponents: true,
 };
 
